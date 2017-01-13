@@ -1,0 +1,7 @@
+We're going to need a program that runs an AJAX request with start=1.
+
+If TuggBoat is not found, run with start=11, and so on
+
+Once Tuggboat is found, return... start?  The list so the user can manually see from there?
+
+Making an interface should be easy.

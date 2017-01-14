@@ -1,6 +1,6 @@
 
 
-function makeRequest(n) {
+function makeRequest() {
   var keyword = document.getElementById("keyword").value.toLowerCase();
   document.getElementById("keyword").disabled = "true";
   document.getElementById("parameters").disabled = "true";
@@ -8,19 +8,19 @@ function makeRequest(n) {
   if (keyword.length === 0 || parameters.length === 0 ) {
     document.getElementById("response").innerHTML = "Must have keyword and search parameters.";
   } else {
-    request_for_nth_page(n, keyword, parameters);
+    requestForNthPage(keyword, parameters);
   }
 }
 
-function request_for_nth_page(n, keyword, parameters) {
-  document.getElementById("timesChecked").value = parseInt(document.getElementById("timesChecked").value) + 1;
-  if(n>10){
+function requestForNthPage(keyword, searchParameters) {
+  var timesChecked = document.getElementById("timesChecked");
+  timesChecked.value = parseInt(timesChecked.value) + 1;
+  if (timesChecked.value > 10) {
     console.log("Beyond the 10th page");
     return;
   }
   var found = false;
   var links = [];
-  var searchParameters = parameters.toLowerCase().split(" ").join("+");
   // keyword = "google";
   $.ajax({
     type: "GET",
@@ -31,7 +31,7 @@ function request_for_nth_page(n, keyword, parameters) {
         fields: "items(link),queries",
         q: searchParameters,
         count: 100,
-        start: (n - 1) * 10 + 1
+        start: (timesChecked.value - 1) * 10 + 1
     },
     success: function (res) {
         console.log("Starting at " + res.queries.request[0].startIndex);
@@ -40,19 +40,19 @@ function request_for_nth_page(n, keyword, parameters) {
         });
         links.forEach(function (link, ind) {
           if(found === false){
-            var numCheck = (n - 1) * 10 + 1 + ind;
+            var numCheck = (timesChecked.value - 1) * 10 + 1 + ind;
             console.log("Checking " + numCheck + " for " + keyword.toLowerCase());
             console.log(link.toLowerCase());
-            console.log(link.toLowerCase().indexOf(keyword.toLowerCase()));
-            if (link.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
-              document.getElementById("response").innerHTML = numCheck;
+            if (link.toLowerCase().indexOf(keyword) !== -1) {
+              document.getElementById("response").innerHTML =
+                keyword + " is result " + numCheck + " when searching " + searchParameters;
               found = true;
 
             }
           }
         });
         if(found === false){
-          askForNextStep(n, keyword, parameters);
+          askForNextStep(keyword, parameters);
         }
     },
     error: function (xhr, status, error) {
@@ -68,15 +68,15 @@ function request_for_nth_page(n, keyword, parameters) {
   });
 
 }
-function askForNextStep(n, keyword, parameters) {
-  var first = n;
-  var last = n + 9;
+function askForNextStep(keyword, parameters) {
+  var first = (parseInt(document.getElementById("timesChecked").value) - 1) * 10 + 1;
+  var last = first + 9;
   document.getElementById("response").innerHTML =
-    "I've checked results " + first + "through " + last +
+    "I've checked results " + first + " through " + last +
     ".  Shall I keep looking?";
   document.getElementById("keepGoing").style.visibility = "visible";
 }
 
 function keepGoing() {
-
+  makeRequest(document.getElementById("timesChecked").value + 1);
 }

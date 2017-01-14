@@ -3,7 +3,11 @@
 function makeRequest() {
   var keyword = document.getElementById("keyword").value;
   var parameters = document.getElementById("parameters").value.split(" ").join("+");
-  request_for_nth_page(1, keyword, parameters);
+  if (keyword.length === 1 || parameters.length === 0 ) {
+    document.getElementById("response").innerHTML = "Must have keyword and search parameters.";
+  } else {
+    request_for_nth_page(1, keyword, parameters);
+  }
 }
 
 function request_for_nth_page(n, keyword, parameters) {

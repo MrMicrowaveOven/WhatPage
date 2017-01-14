@@ -39,12 +39,16 @@ function request_for_nth_page(n, keyword, parameters) {
           links.push(item.link);
         });
         links.forEach(function (link, ind) {
-          var numCheck = (n - 1) * 10 + 1 + ind;
-          console.log("Checking " + numCheck);
-          console.log(link);
-          if (link.indexOf(keyword) !== -1) {
-            document.getElementById("response").innerHTML = numCheck;
-            found = true;
+          if(found === false){
+            var numCheck = (n - 1) * 10 + 1 + ind;
+            console.log("Checking " + numCheck + " for " + keyword.toLowerCase());
+            console.log(link.toLowerCase());
+            console.log(link.toLowerCase().indexOf(keyword.toLowerCase()));
+            if (link.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
+              document.getElementById("response").innerHTML = numCheck;
+              found = true;
+
+            }
           }
         });
         if(found === false){

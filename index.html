@@ -8,16 +8,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
+    Welcome to <strong> What Page Am I On? </strong>  This app can be used to tell you what page of Google's search results a certain site is on.
+    <br><br>
+    With the current version, it will tell you which result of Page 1 your current keyword is contained in.  For example, if you search "custom email"
+    with keyword "iwantmyname", it will display a 2 because it is the 2nd result of that google search.
+    <br><br>
+    Later versions will allow you to search further pages of google, but right now it can only search the first page.
+    <br>
     <label>Times checked: <input type="text" name="timesChecked" value="0" disabled="true"></label>
     <br>
     <label for="parameters">Search Parameters </label><input type="text" name="parameters" id="parameters" value="">
     <br>
     <label>Keyword <input type="text" name="keyword" id="keyword" value=""></label>
     <br>
-    <button onClick="makeRequest()">What Page is it on?</button>
+    <button onClick="makeRequest()">Which result is it?</button>
     <br>
     <div class="response" id="response">
-      
+
     </div>
     <button onClick="keepGoing()" id="keepGoing">Keep Going!</button>
   </body>

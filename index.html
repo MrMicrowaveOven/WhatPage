@@ -20,14 +20,14 @@
     </div>
     <br>
     <div class="application">
-      <label>Times checked <input type="text" name="timesChecked" value="0" disabled="true"></label>
-      <label>Search Parameters <input type="text" name="parameters" id="parameters" value=""></label>
-      <label>Keyword <input type="text" name="keyword" id="keyword" value=""></label>
-      <button class="button" onClick="makeRequest()">Which result is it?</button>
+      <label>Times checked <input type="text" id="timesChecked" name="timesChecked" value="0" disabled="true"></label>
+      <label>Search Parameters <input type="text" name="parameters" id="parameters" value="custom email"></label>
+      <label>Keyword <input type="text" name="keyword" id="keyword" value="iwantmyname"></label>
+      <button class="button" onClick="makeRequest(1)">Which result is it?</button>
       <div class="response" id="response">
 
       </div>
-      <button onClick="keepGoing()" id="keepGoing">Keep Going!</button>
+      <button class="button" onClick="keepGoing()" id="keepGoing">Keep Going!</button>
     </div>
   </body>
 </html>

@@ -1,23 +1,26 @@
 
 
-function makeRequest() {
-  var keyword = document.getElementById("keyword").value;
-  var parameters = document.getElementById("parameters").value.split(" ").join("+");
-  if (keyword.length === 1 || parameters.length === 0 ) {
+function makeRequest(n) {
+  var keyword = document.getElementById("keyword").value.toLowerCase();
+  document.getElementById("keyword").disabled = "true";
+  document.getElementById("parameters").disabled = "true";
+  var parameters = document.getElementById("parameters").value.toLowerCase().split(" ").join("+");
+  if (keyword.length === 0 || parameters.length === 0 ) {
     document.getElementById("response").innerHTML = "Must have keyword and search parameters.";
   } else {
-    request_for_nth_page(1, keyword, parameters);
+    request_for_nth_page(n, keyword, parameters);
   }
 }
 
 function request_for_nth_page(n, keyword, parameters) {
+  document.getElementById("timesChecked").value = parseInt(document.getElementById("timesChecked").value) + 1;
   if(n>10){
     console.log("Beyond the 10th page");
     return;
   }
   var found = false;
   var links = [];
-  var searchParameters = parameters.split(" ").join("+");
+  var searchParameters = parameters.toLowerCase().split(" ").join("+");
   // keyword = "google";
   $.ajax({
     type: "GET",
@@ -27,6 +30,7 @@ function request_for_nth_page(n, keyword, parameters) {
         cx: "012667598935678745968:ixjc-b6xzre",
         fields: "items(link),queries",
         q: searchParameters,
+        count: 100,
         start: (n - 1) * 10 + 1
     },
     success: function (res) {
@@ -53,6 +57,8 @@ function request_for_nth_page(n, keyword, parameters) {
       console.log(error);
       if (xhr.status === 403) {
         document.getElementById("response").innerHTML = "Sorry, ran out of pings for today :(";
+      } else {
+        document.getElementById("response").innerHTML = "Error #" + xhr.status;
       }
     }
   });

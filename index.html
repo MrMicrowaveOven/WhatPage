@@ -3,8 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>What Page of Google am I on?</title>
+    <script type="text/javascript" src="request.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
+    <label for="parameters">Search Parameters </label><input type="text" name="parameters" id="parameters" value="">
+    <br>
+    <label>Keyword <input type="text" name="keyword" id="keyword" value=""></label>
+    <br>
+    <button onClick="makeRequest()">What Page is it on?</button>
+    <br>
+    <div class="response" id="response">
 
+    </div>
   </body>
 </html>

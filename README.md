@@ -2,6 +2,8 @@
 
 WhatPage is a small app that allows the user to find the ranking of a website.
 
+You can view the app [here](https://mrmicrowaveoven.github.io/WhatPage/).
+
 ##Google Custom Search API Integration
 
 This app uses the Google Custom Search API, which is generally used to search a specific website.  The Google Web Search API would have been more suited, but has been decommissioned by Google since 2014.  As a result, I had to tweek their new Google Custom Search to do the job.  There is an option to "search my site and also the web", then make the list of sites empty.  Not an elegant solution, but it works.  Note this cannot be done with a Premium Google Developer account, meaning we are limited to 100 calls per day with no hope of upgrade.

@@ -1,12 +1,14 @@
 
 
-function makeRequest() {
+function validateInput() {
   var keyword = document.getElementById("keyword").value.toLowerCase();
   document.getElementById("keyword").disabled = "true";
   document.getElementById("parameters").disabled = "true";
-  var parameters = document.getElementById("parameters").value.toLowerCase().split(" ").join("+");
+  var parameters = document.getElementById("parameters").value;
+  parameters = parameters.toLowerCase().split(" ").join("+");
   if (keyword.length === 0 || parameters.length === 0 ) {
-    document.getElementById("response").innerHTML = "Must have keyword and search parameters.";
+    document.getElementById("response").innerHTML
+      = "Must have keyword and search parameters.";
   } else {
     requestForNthPage(keyword, parameters);
   }
@@ -19,7 +21,6 @@ function requestForNthPage(keyword, searchParameters) {
     console.log("Beyond the 10th page");
     return;
   }
-  var found = false;
   var links = [];
   // keyword = "google";
   $.ajax({
@@ -30,46 +31,56 @@ function requestForNthPage(keyword, searchParameters) {
         cx: "012667598935678745968:ixjc-b6xzre",
         fields: "items(link),queries",
         q: searchParameters,
-        count: 100,
         start: (timesChecked.value - 1) * 10 + 1
     },
     success: function (res) {
-        console.log("Starting at " + res.queries.request[0].startIndex);
+        // console.log("Starting at " + res.queries.request[0].startIndex);
         res.items.forEach(function (item) {
           links.push(item.link);
         });
-        links.forEach(function (link, ind) {
-          if(found === false){
-            var numCheck = (timesChecked.value - 1) * 10 + 1 + ind;
-            console.log("Checking " + numCheck + " for " + keyword.toLowerCase());
-            console.log(link.toLowerCase());
-            if (link.toLowerCase().indexOf(keyword) !== -1) {
-              document.getElementById("response").innerHTML =
-                keyword + " is result " + numCheck + " when searching " + searchParameters;
-              found = true;
-
-            }
-          }
-        });
-        if(found === false){
-          askForNextStep(keyword, parameters);
-        }
+        checkLinks(links, keyword, searchParameters);
     },
     error: function (xhr, status, error) {
       console.log(xhr);
       console.log(status);
       console.log(error);
       if (xhr.status === 403) {
-        document.getElementById("response").innerHTML = "Sorry, ran out of pings for today :(";
+        document.getElementById("response").innerHTML
+          = "Sorry, ran out of pings for today :(";
       } else {
         document.getElementById("response").innerHTML = "Error #" + xhr.status;
       }
     }
   });
-
 }
+
+function checkLinks(links, keyword, searchParameters) {
+  var timesChecked = document.getElementById("timesChecked").value;
+  var found = false;
+  links.forEach(function (link, ind) {
+    if(found === false){
+      var numCheck = (timesChecked - 1) * 10 + 1 + ind;
+      // console.log("Checking " + numCheck
+        // + " for " + keyword.toLowerCase());
+      // console.log(link.toLowerCase());
+      if (link.toLowerCase().indexOf(keyword) !== -1) {
+        document.getElementById("response").innerHTML =
+          keyword + " is result " + numCheck
+            + " when searching " + searchParameters;
+        document.getElementById("keepGoing").style.visibility = "hidden";
+        found = true;
+
+      }
+    }
+  });
+  if(found === false){
+    askForNextStep(keyword, searchParameters);
+  }
+}
+
 function askForNextStep(keyword, parameters) {
-  var first = (parseInt(document.getElementById("timesChecked").value) - 1) * 10 + 1;
+  var first
+    = (parseInt(document.getElementById("timesChecked").value) - 1) * 10 + 1;
   var last = first + 9;
   document.getElementById("response").innerHTML =
     "I've checked results " + first + " through " + last +
@@ -78,5 +89,13 @@ function askForNextStep(keyword, parameters) {
 }
 
 function keepGoing() {
-  makeRequest(document.getElementById("timesChecked").value + 1);
+  validateInput(document.getElementById("timesChecked").value + 1);
+}
+
+function reset() {
+  document.getElementById("keepGoing").style.visibility = "hidden";
+  document.getElementById("keyword").disabled = "false";
+  document.getElementById("parameters").disabled = "false";
+  document.getElementById("response").innerHTML = "";
+  document.getElementById("timesChecked").value = 0;
 }

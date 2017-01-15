@@ -14,6 +14,10 @@ html {
   background-color: darkgrey;
 }
 
+#links {
+  font-size: large;
+}
+
 .app, .response {
   margin: 1px;
 }

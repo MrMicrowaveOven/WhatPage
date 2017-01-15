@@ -65,8 +65,8 @@ function checkLinks(links, keyword, searchParameters) {
       // console.log(link.toLowerCase());
       if (link.toLowerCase().indexOf(keyword) !== -1) {
         document.getElementById("response").innerHTML =
-          keyword + " is result " + numCheck
-            + " when searching " + searchParameters;
+          "'" + keyword + "' is in result "
+          + numCheck + " when searching '" + searchParameters + "'.";
         document.getElementById("keepGoing").style.visibility = "hidden";
         found = true;
 

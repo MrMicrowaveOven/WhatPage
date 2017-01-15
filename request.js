@@ -2,14 +2,14 @@
 
 function validateInput() {
   var keyword = document.getElementById("keyword").value.toLowerCase();
-  document.getElementById("keyword").disabled = "true";
-  document.getElementById("parameters").disabled = "true";
   var parameters = document.getElementById("parameters").value;
   parameters = parameters.toLowerCase().split(" ").join("+");
   if (keyword.length === 0 || parameters.length === 0 ) {
     document.getElementById("response").innerHTML
       = "Must have keyword and search parameters.";
   } else {
+    document.getElementById("keyword").disabled = "true";
+    document.getElementById("parameters").disabled = "true";
     requestForNthPage(keyword, parameters);
   }
 }
@@ -94,8 +94,8 @@ function keepGoing() {
 
 function reset() {
   document.getElementById("keepGoing").style.visibility = "hidden";
-  document.getElementById("keyword").disabled = "false";
-  document.getElementById("parameters").disabled = "false";
+  document.getElementById("keyword").disabled = "";
+  document.getElementById("parameters").disabled = "";
   document.getElementById("response").innerHTML = "";
   document.getElementById("timesChecked").value = 0;
 }

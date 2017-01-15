@@ -11,6 +11,14 @@ html {
   align-items: center;
 }
 
+.app, .response {
+  margin: 1px;
+}
+
+.button {
+  margin: 3px;
+}
+
 .application {
   display: flex;
   flex-direction: column;

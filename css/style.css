@@ -14,7 +14,7 @@ html {
   align-items: center;
   background-image: url("../background.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 115%;
 }
 
 #timesChecked, #parameters, #keyword {

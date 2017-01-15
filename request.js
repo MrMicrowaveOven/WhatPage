@@ -67,7 +67,10 @@ function checkLinks(links, keyword, searchParameters) {
         document.getElementById("response").innerHTML =
           "'" + keyword + "' is in result "
           + numCheck + " when searching '" + searchParameters + "'.";
+
         document.getElementById("keepGoing").style.visibility = "hidden";
+        document.getElementById("keyword").disabled = "";
+        document.getElementById("parameters").disabled = "";
         found = true;
 
       }

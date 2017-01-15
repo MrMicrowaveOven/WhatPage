@@ -1,4 +1,5 @@
 body {
+  position: relative;
   font-size: x-large;
   font-family: 'Slabo 27px', serif;
   letter-spacing: .5px;
@@ -30,9 +31,10 @@ html {
 }
 
 #links {
-  vertical-align: bottom;
+  position: absolute;
+  bottom: 0;
   font-size: large;
-  padding: 15px 10px 0px 10px;
+  padding: 15px 0px 20px 0px;
 }
 
 .app, .response {

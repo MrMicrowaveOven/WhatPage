@@ -41,7 +41,12 @@ html {
 }
 
 .app, .response {
-  width: 500px;
+  width: 460px;
+}
+
+.app {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .application {

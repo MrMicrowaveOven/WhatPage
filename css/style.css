@@ -1,5 +1,14 @@
 body {
   font-size: x-large;
+  font-family: 'Slabo 27px', serif;
+  letter-spacing: .5px;
+  margin: 60px;
+  width: 720px;
+}
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .application {
@@ -13,9 +22,8 @@ body {
 }
 
 .description {
-
+  text-align: justify;
 }
 
 #keepGoing {
   visibility: hidden;
-}

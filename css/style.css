@@ -3,6 +3,7 @@ body {
   font-family: 'Slabo 27px', serif;
   letter-spacing: .5px;
   margin: 60px;
+  height: 600px;
   width: 720px;
   background-color: white;
   padding: 20px;
@@ -24,6 +25,7 @@ html {
 
 #links {
   font-size: large;
+  padding: 15px 10px 0px 10px;
 }
 
 .app, .response {

@@ -5,7 +5,7 @@ body {
   margin: 60px;
   height: 600px;
   width: 720px;
-  background-color: rgba(255, 255, 255, .6);
+  background-color: rgba(255, 255, 255, .8);
   padding: 20px;
 }
 html {
@@ -13,6 +13,8 @@ html {
   flex-direction: column;
   align-items: center;
   background-image: url("../background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #timesChecked, #parameters, #keyword {
@@ -28,6 +30,7 @@ html {
 }
 
 #links {
+  vertical-align: bottom;
   font-size: large;
   padding: 15px 10px 0px 10px;
 }

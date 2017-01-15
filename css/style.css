@@ -42,6 +42,12 @@ html {
   margin: 1px;
 }
 
+#parameters, #keyword {
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
 .button {
   margin: 3px;
 }
@@ -63,6 +69,8 @@ html {
 
 .button {
   font-size: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
 }
 
 .description {

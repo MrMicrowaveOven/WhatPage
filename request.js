@@ -2,8 +2,8 @@
 
 function validateInput() {
   var keyword = document.getElementById("keyword").value.toLowerCase();
-  var parameters = document.getElementById("parameters").value;
-  parameters = parameters.toLowerCase().split(" ").join("+");
+  var parameters = document.getElementById("parameters").value.toLowerCase();
+  parameters = parameters.split(" ").join("+");
   if (keyword.length === 0 || parameters.length === 0 ) {
     document.getElementById("response").innerHTML
       = "Must have keyword and search parameters.";

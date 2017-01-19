@@ -18,11 +18,11 @@ function requestForNthPage(keyword, searchParameters) {
   var timesChecked = document.getElementById("timesChecked");
   timesChecked.value = parseInt(timesChecked.value) + 1;
   if (timesChecked.value > 10) {
-    console.log("Beyond the 10th page");
+    document.getElementById("response").innerHTML =
+      "Beyond the 10th page.  Sorry, that's as far as I can go.";
     return;
   }
   var links = [];
-  // keyword = "google";
   $.ajax({
     type: "GET",
     url: "https://www.googleapis.com/customsearch/v1",
@@ -34,16 +34,12 @@ function requestForNthPage(keyword, searchParameters) {
         start: (timesChecked.value - 1) * 10 + 1
     },
     success: function (res) {
-        // console.log("Starting at " + res.queries.request[0].startIndex);
         res.items.forEach(function (item) {
           links.push(item.link);
         });
         checkLinks(links, keyword, searchParameters);
     },
     error: function (xhr, status, error) {
-      console.log(xhr);
-      console.log(status);
-      console.log(error);
       if (xhr.status === 403) {
         document.getElementById("response").innerHTML
           = "Sorry, ran out of pings for today :(";

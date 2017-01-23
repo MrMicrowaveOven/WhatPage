@@ -88,7 +88,7 @@ function askForNextStep(keyword, parameters) {
 }
 
 function keepGoing() {
-  validateInput(document.getElementById("timesChecked").value + 1);
+  validateInput();
 }
 
 function reset() {

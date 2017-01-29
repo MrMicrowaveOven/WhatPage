@@ -1,4 +1,7 @@
-
+function search() {
+  document.getElementById("timesChecked").value = 0;
+  validateInput();
+}
 
 function validateInput() {
   var keyword = document.getElementById("keyword").value.toLowerCase();

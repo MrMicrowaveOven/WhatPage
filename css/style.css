@@ -61,7 +61,11 @@ html {
 }
 
 .app, .response {
-  width: 460px;
+  width: 380px;
+}
+
+.response {
+  text-align: center;
 }
 
 .app {

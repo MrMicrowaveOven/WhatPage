@@ -3,22 +3,38 @@ function search() {
   validateInput();
 }
 
-function validateInput() {
-  var keyword = document.getElementById("keyword").value.toLowerCase();
+function getInput() {
   var parameters = document.getElementById("parameters").value.toLowerCase();
   parameters = parameters.split(" ").join("+");
+  var keyword = document.getElementById("keyword").value.toLowerCase();
+  return [parameters, keyword];
+}
+
+
+function validateInput() {
+  var inputs = getInput();
+  var parameters = inputs[0];
+  var keyword =  inputs[1];
   if (keyword.length === 0 || parameters.length === 0 ) {
     document.getElementById("response").innerHTML
       = "Must have search terms and url.";
   } else {
-    document.getElementById("keyword").disabled = "true";
-    document.getElementById("parameters").disabled = "true";
+    disableFields();
     requestForNthPage(keyword, parameters);
   }
 }
 
+function getTimesChecked() {
+  return document.getElementById("timesChecked");
+}
+
+function disableFields() {
+  document.getElementById("keyword").disabled = "true";
+  document.getElementById("parameters").disabled = "true";
+}
+
 function requestForNthPage(keyword, searchParameters) {
-  var timesChecked = document.getElementById("timesChecked");
+  var timesChecked = getTimesChecked();
   timesChecked.value = parseInt(timesChecked.value) + 1;
   if (timesChecked.value > 10) {
     document.getElementById("response").innerHTML =
@@ -54,7 +70,7 @@ function requestForNthPage(keyword, searchParameters) {
 }
 
 function checkLinks(links, keyword, searchParameters) {
-  var timesChecked = document.getElementById("timesChecked").value;
+  var timesChecked = getTimesChecked().value;
   var found = false;
   links.forEach(function (link, ind) {
     if(found === false){

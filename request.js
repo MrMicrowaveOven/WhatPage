@@ -9,7 +9,7 @@ function validateInput() {
   parameters = parameters.split(" ").join("+");
   if (keyword.length === 0 || parameters.length === 0 ) {
     document.getElementById("response").innerHTML
-      = "Must have keyword and search parameters.";
+      = "Must have search terms and url.";
   } else {
     document.getElementById("keyword").disabled = "true";
     document.getElementById("parameters").disabled = "true";

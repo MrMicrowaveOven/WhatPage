@@ -88,6 +88,7 @@ function askForNextStep(keyword, parameters) {
     "I've checked results " + first + " through " + last +
     ".  Shall I keep looking?";
   document.getElementById("keepGoing").style.visibility = "visible";
+  document.getElementById("search").disabled = "true";
 }
 
 function keepGoing() {
@@ -98,6 +99,7 @@ function reset() {
   document.getElementById("keepGoing").style.visibility = "hidden";
   document.getElementById("keyword").disabled = "";
   document.getElementById("parameters").disabled = "";
+  document.getElementById("search").disabled = "";
   document.getElementById("response").innerHTML = "";
   document.getElementById("timesChecked").value = 0;
 }

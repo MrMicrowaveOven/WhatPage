@@ -4,7 +4,7 @@ body {
   font-family: 'Slabo 27px', serif;
   letter-spacing: .5px;
   margin: 60px auto;
-  min-height: 640px;
+  min-height: 665px;
   width: 720px;
   background-color: rgba(255, 255, 255, .75);
   padding: 30px;
@@ -60,11 +60,12 @@ html {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.app, .response {
+.app {
   width: 380px;
 }
 
 .response {
+  width: 420px;
   text-align: center;
 }
 

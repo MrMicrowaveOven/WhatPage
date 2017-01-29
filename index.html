@@ -11,11 +11,11 @@
   </head>
   <body>
     <div class="description">
-      Welcome to <strong> What Page Am I On? </strong>  This app can be used to tell you the rank of a site in Google's search results.
+      Welcome to <strong> What Page Am I On? </strong>  Given a set of search terms and a website url, this app returns the rank of the site in Google's search results.
       <br><br>
-      For example, if you search "custom email" with keyword "iwantmyname", it will display a 2 because "iwantmyname.com" is the 2nd result of that Google search.
+      For example, using the search terms "custom email" with url "tuggboat.com" will result in a 9 because "tuggboat.com" is the 9th result of that Google search.
       <br><br>
-      Note that the number might be off from a manual search, since a manual search involves cookies, location, etc.
+      Note that <strong> WHAT PAGE AM I ON </strong> results may differ slightly from a manual search, since a manual search involves cookies, location, etc.
     </div>
     <div class="application">
       <label id="timesCheckedLabel">Times Checked<input type="text" id="timesChecked" name="timesChecked" value="0" disabled="true"></label>
@@ -24,7 +24,7 @@
       <button id="search" class="button" onClick="search()">Which result is it?</button>
       <button class="button" onClick="reset()" id="reset">Reset</button>
       <div class="response" id="response"></div>
-      <button class="button" onClick="keepGoing()" id="keepGoing">Keep Going!</button>
+      <button class="button" onClick="keepGoing()" id="keepGoing">Check next page!</button>
     </div>
     <div class= "links" id="links">
       Written by Benjamin Zagorski.

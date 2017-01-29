@@ -64,7 +64,7 @@ function checkLinks(links, keyword, searchParameters) {
       // console.log(link.toLowerCase());
       if (link.toLowerCase().indexOf(keyword) !== -1) {
         document.getElementById("response").innerHTML =
-          "'" + keyword + "' is in result "
+          "'" + keyword + "' is result "
           + numCheck + " when searching '" + searchParameters + "'.";
 
         document.getElementById("keepGoing").style.visibility = "hidden";
@@ -81,12 +81,13 @@ function checkLinks(links, keyword, searchParameters) {
 }
 
 function askForNextStep(keyword, parameters) {
+  var timesChecked = document.getElementById("timesChecked").value;
   var first
-    = (parseInt(document.getElementById("timesChecked").value) - 1) * 10 + 1;
+    = (parseInt(timesChecked) - 1) * 10 + 1;
   var last = first + 9;
   document.getElementById("response").innerHTML =
-    "I've checked results " + first + " through " + last +
-    ".  Shall I keep looking?";
+    "I've checked page " + timesChecked + ", which contains results " +
+    first + " through " + last + ".  Shall I keep looking?";
   document.getElementById("keepGoing").style.visibility = "visible";
   document.getElementById("search").disabled = "true";
 }

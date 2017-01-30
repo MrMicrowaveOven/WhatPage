@@ -83,7 +83,8 @@ function checkLinks(links, keyword, searchParameters) {
           "'" + keyword + "' is result "
           + numCheck + " when searching '" + searchParameters + "'.";
 
-        document.getElementById("keepGoing").style.visibility = "hidden";
+        document.getElementById("storeResults").style.display = "block";
+        document.getElementById("keepGoing").style.display = "none";
         document.getElementById("keyword").disabled = "";
         document.getElementById("parameters").disabled = "";
         found = true;
@@ -104,7 +105,7 @@ function askForNextStep(keyword, parameters) {
   document.getElementById("response").innerHTML =
     "I've checked page " + timesChecked + ", which contains results " +
     first + " through " + last + ".  Shall I keep looking?";
-  document.getElementById("keepGoing").style.visibility = "visible";
+  document.getElementById("keepGoing").style.display = "block";
   document.getElementById("search").disabled = "true";
 }
 
@@ -113,7 +114,8 @@ function keepGoing() {
 }
 
 function reset() {
-  document.getElementById("keepGoing").style.visibility = "hidden";
+  document.getElementById("keepGoing").style.display = "none";
+  document.getElementById("storeResults").style.display = "none";
   document.getElementById("keyword").disabled = "";
   document.getElementById("parameters").disabled = "";
   document.getElementById("search").disabled = "";

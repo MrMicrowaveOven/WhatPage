@@ -88,5 +88,7 @@ html {
   text-align: justify;
 }
 
-#keepGoing {
-  visibility: hidden;
+#keepGoing, #storeResults {
+  /*visibility: hidden;*/
+  display: none;
+}

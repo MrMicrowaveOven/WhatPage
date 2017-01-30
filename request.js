@@ -97,7 +97,7 @@ function checkLinks(links, keyword, searchParameters) {
 }
 
 function askForNextStep(keyword, parameters) {
-  var timesChecked = document.getElementById("timesChecked").value;
+  var timesChecked = getTimesChecked().value;
   var first
     = (parseInt(timesChecked) - 1) * 10 + 1;
   var last = first + 9;

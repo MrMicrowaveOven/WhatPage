@@ -1,5 +1,8 @@
 function search() {
+  document.getElementById("storageResponse").innerHTML = "";
   document.getElementById("timesChecked").value = 0;
+  document.getElementById("storeResults").style.display = "none";
+  document.getElementById("storeResults").disabled = "true";
   validateInput();
 }
 
@@ -84,6 +87,7 @@ function checkLinks(links, keyword, searchParameters) {
           + numCheck + " when searching '" + searchParameters + "'.";
 
         document.getElementById("storeResults").style.display = "block";
+        document.getElementById("storeResults").disabled = "";
         document.getElementById("keepGoing").style.display = "none";
         document.getElementById("keyword").disabled = "";
         document.getElementById("parameters").disabled = "";
@@ -113,7 +117,14 @@ function keepGoing() {
   validateInput();
 }
 
+function storeResults() {
+  document.getElementById("storageResponse").innerHTML =
+    "This is where storage info will go.";
+  document.getElementById("storeResults").disabled = "true";
+}
+
 function reset() {
+  document.getElementById("storageResponse").innerHTML = "";
   document.getElementById("keepGoing").style.display = "none";
   document.getElementById("storeResults").style.display = "none";
   document.getElementById("keyword").disabled = "";

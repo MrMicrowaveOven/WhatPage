@@ -79,15 +79,20 @@ function checkLinks(links, keyword, searchParameters) {
         // + " for " + keyword.toLowerCase());
       // console.log(link.toLowerCase());
       if (link.toLowerCase().indexOf(keyword) !== -1) {
+        var linkToSite = document.createElement("a");
+        linkToSite.href = link;
+        linkToSite.innerHTML = 'here';
+        linkToSite.target = "_blank";
         document.getElementById("response").innerHTML =
           "'" + keyword + "' is result "
-          + numCheck + " when searching '" + searchParameters + "'.";
-
+          + numCheck + " when searching '" + searchParameters + "'."
+          + "  Click ";
+        document.getElementById("response").appendChild(linkToSite);
+        document.getElementById("response2").innerHTML = "to visit the site!";
         document.getElementById("keepGoing").style.visibility = "hidden";
         document.getElementById("keyword").disabled = "";
         document.getElementById("parameters").disabled = "";
         found = true;
-
       }
     }
   });
@@ -118,5 +123,6 @@ function reset() {
   document.getElementById("parameters").disabled = "";
   document.getElementById("search").disabled = "";
   document.getElementById("response").innerHTML = "";
+  document.getElementById("response2").innerHTML = "";
   document.getElementById("timesChecked").value = 0;
 }

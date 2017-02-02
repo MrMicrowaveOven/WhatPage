@@ -118,9 +118,31 @@ function keepGoing() {
 }
 
 function storeResults() {
-  document.getElementById("storageResponse").innerHTML =
-    "This is where storage info will go.";
-  document.getElementById("storeResults").disabled = "true";
+  var searchTerms = document.getElementById("parameters");
+  var url = document.getElementById("keyword");
+
+  var params = {
+    searchTerms: searchTerms,
+    url: url
+  };
+  $.ajax({
+    type: "POST",
+    url: "https://whatpage-af2c1.firebaseio.com/.json",
+    data: JSON.stringify(params),
+    success: function (res) {
+      console.log(res);
+      document.getElementById("storageResponse").innerHTML =
+      "Data stored!";
+      document.getElementById("storeResults").disabled = "true";
+    },
+    error: function (xhr, status, error) {
+      document.getElementById("storageResponse").innerHTML =
+      "Data storage error. " + xhr + ":" + status + ":" + error;
+      console.log(xhr);
+      console.log(status);
+      console.log(error);
+    }
+  });
 }
 
 function reset() {
